@@ -1,39 +1,37 @@
 /* Lógico_1: */
 
 CREATE TABLE Personagem (
-    ID_Personagem INT PRIMARY KEY NOT NULL,
-    Nome_Personagem VARCHAR(252) NOT NULL,
-    Etnia_Personagem VARCHAR(252) NOT NULL,
+    ID_Personagem INT PRIMARY KEY,
+    Nome_Personagem VARCHAR(252),
+    Etnia_Personagem VARCHAR(252),
     Nome_Vitima VARCHAR(252),
     Nome_Controlador VARCHAR(252),
-    Personagem_TIPO INT NOT NULL,
     FK_ID_Tratamento INT,
     FK_ID_Sociocultural INT
 );
 
 CREATE TABLE Tratamento (
-    ID_Tratamento INT PRIMARY KEY NOT NULL,
-    Nome_Tratamento VARCHAR(252) NOT NULL,
-    Descricao_Tratamento VARCHAR(252) NOT NULL,
-    FK_ID_Membro_Familia VARCHAR(252) 
+    ID_Tratamento INT PRIMARY KEY,
+    Nome_Tratamento VARCHAR(252),
+    Descricao_Tratamento VARCHAR(252)
 );
 
 CREATE TABLE Familia (
-    ID_Familia INT PRIMARY KEY NOT NULL,
-    Nome_Familia VARCHAR(252) NOT NULL,
-    Qtde_Membros INT NOT NULL
+    ID_Familia INT PRIMARY KEY,
+    Nome_Familia VARCHAR(252),
+    Qtde_Membros INT
 );
 
 CREATE TABLE Contexto_Sociocultural (
-    ID_Sociocultural INT PRIMARY KEY NOT NULL,
-    Nome_Contexto VARCHAR(252) NOT NULL,
-    Classe_Sociocultural VARCHAR(252) NOT NULL,
-    Descricao_Sociocultural VARCHAR(252) NOT NULL
+    ID_Sociocultural INT PRIMARY KEY,
+    Nome_Contexto VARCHAR(252),
+    Classe_Sociocultural VARCHAR(252),
+    Descricao_Sociocultural VARCHAR(252)
 );
 
 CREATE TABLE Membro_Familia (
-    ID_Membro_Familia VARCHAR(252) PRIMARY KEY NOT NULL,
-    Funcao_Membro VARCHAR(252) NOT NULL,
+    ID_Membro_Familia INT PRIMARY KEY,
+    Funcao_Membro VARCHAR(252),
     FK_ID_Familia INT,
     FK_ID_Personagem INT
 );
@@ -41,16 +39,11 @@ CREATE TABLE Membro_Familia (
 ALTER TABLE Personagem ADD CONSTRAINT FK_Personagem_2
     FOREIGN KEY (FK_ID_Tratamento)
     REFERENCES Tratamento (ID_Tratamento)
-    ON DELETE RESTRICT;
+    ON DELETE SET NULL;
  
 ALTER TABLE Personagem ADD CONSTRAINT FK_Personagem_3
     FOREIGN KEY (FK_ID_Sociocultural)
     REFERENCES Contexto_Sociocultural (ID_Sociocultural)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE Tratamento ADD CONSTRAINT FK_Tratamento_2
-    FOREIGN KEY (FK_ID_Membro_Familia)
-    REFERENCES Membro_Familia (ID_Membro_Familia)
     ON DELETE RESTRICT;
  
 ALTER TABLE Membro_Familia ADD CONSTRAINT FK_Membro_Familia_2
