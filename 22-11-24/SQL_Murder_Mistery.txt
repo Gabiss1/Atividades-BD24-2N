@@ -1,0 +1,47 @@
+select * from crime_scene_report;
+
+select * from crime_scene_report
+where type = 'murder' and city = 'SQL City';
+
+select * from person
+where name like '%Annabel%' and address_street_name = 'Franklin Ave';
+
+select * from interview
+where person_id = 16371;
+
+select * from get_fit_now_check_in;
+
+select * from get_fit_now_check_in
+where check_in_date = 20180109;
+
+select * from person
+where address_street_name = 'Northwestern Dr' order by address_number asc;
+
+select * from interview
+where person_id = 14887;
+              
+select * from get_fit_now_check_in
+where check_in_date = 20180109 and membership_id like '48Z%';
+
+select * from get_fit_now_member
+where id = '48Z7A';
+
+select * from drivers_license
+where plate_number like '%H42W%';
+
+// 423327
+// 664760
+
+select * from person 
+where license_id = 664760 or license_id = 423327;
+
+select * from get_fit_now_member
+where id = '48Z55';
+
+/*Congrats, you found the murderer! But wait, there's more... 
+If you think you're up for a challenge, try querying the interview 
+transcript of the murderer to find the real villain behind this crime. 
+If you feel especially confident in your SQL skills, try to complete this final
+step with no more than 2 queries. 
+Use this same INSERT statement with your new suspect to check your answer.
+*/
