@@ -1,3 +1,5 @@
+Como cheguei na Resposta?
+
 select * from crime_scene_report;
 
 select * from crime_scene_report
@@ -38,10 +40,64 @@ where license_id = 664760 or license_id = 423327;
 select * from get_fit_now_member
 where id = '48Z55';
 
-/*Congrats, you found the murderer! But wait, there's more... 
+/*
+Congrats, you found the murderer! But wait, there's more... 
 If you think you're up for a challenge, try querying the interview 
 transcript of the murderer to find the real villain behind this crime. 
 If you feel especially confident in your SQL skills, try to complete this final
 step with no more than 2 queries. 
 Use this same INSERT statement with your new suspect to check your answer.
 */
+
+select * from interview
+where person_id = 67318;
+
+select * from person 
+join drivers_license
+on drivers_license.hair_color = 'red' and drivers_license.car_make = 'Tesla' 
+and drivers_license.car_model = 'Model S' and drivers_license.height>=65 
+and drivers_license.gender = 'female'
+and drivers_license.id = person.license_id;
+
+select * from facebook_event_checkin
+
+select * from person 
+join drivers_license
+on drivers_license.hair_color = 'red' and drivers_license.car_make = 'Tesla' 
+and drivers_license.car_model = 'Model S' and drivers_license.height>=65 
+and drivers_license.gender = 'female'
+and drivers_license.id = person.license_id
+join facebook_event_checkin
+on facebook_event_checkin.person_id = person.id and 20171130<date and 20180000>date 
+and event_name = 'SQL Symphony Concert';
+
+/*
+Congrats, you found the brains behind the murder! 
+Everyone in SQL City hails you as the greatest SQL detective of all time.
+Time to break out the champagne!
+*/
+
+Códigos para chegar diretamente no Assassino e Mandante:
+
+Assassino
+
+select * from person 
+join get_fit_now_member 
+on get_fit_now_member.person_id = person.id and get_fit_now_member.id like '48Z%'
+join get_fit_now_check_in
+on get_fit_now_check_in.check_in_date = 20180109 
+and get_fit_now_check_in.membership_id = get_fit_now_member.id
+join drivers_license
+on drivers_license.plate_number like '%H42W%'
+
+Mandante
+
+select * from person 
+join drivers_license
+on drivers_license.hair_color = 'red' and drivers_license.car_make = 'Tesla' 
+and drivers_license.car_model = 'Model S' and drivers_license.height>=65 
+and drivers_license.gender = 'female'
+and drivers_license.id = person.license_id
+join facebook_event_checkin
+on facebook_event_checkin.person_id = person.id and 20171130<date and 20180000>date 
+and event_name = 'SQL Symphony Concert';
