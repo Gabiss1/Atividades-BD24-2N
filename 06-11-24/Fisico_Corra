@@ -1,0 +1,55 @@
+/* Lógico_1: */
+
+CREATE TABLE Personagem (
+    ID_Personagem INT PRIMARY KEY,
+    Nome_Personagem VARCHAR(252),
+    Etnia_Personagem VARCHAR(252),
+    Nome_Vitima VARCHAR(252),
+    Nome_Controlador VARCHAR(252),
+    FK_ID_Tratamento INT,
+    FK_ID_Sociocultural INT
+);
+
+CREATE TABLE Tratamento (
+    ID_Tratamento INT PRIMARY KEY,
+    Nome_Tratamento VARCHAR(252),
+    Descricao_Tratamento VARCHAR(252)
+);
+
+CREATE TABLE Familia (
+    ID_Familia INT PRIMARY KEY,
+    Nome_Familia VARCHAR(252),
+    Qtde_Membros INT
+);
+
+CREATE TABLE Contexto_Sociocultural (
+    ID_Sociocultural INT PRIMARY KEY,
+    Nome_Contexto VARCHAR(252),
+    Classe_Sociocultural VARCHAR(252),
+    Descricao_Sociocultural VARCHAR(252)
+);
+
+CREATE TABLE Membro_Familia (
+    ID_Membro_Familia INT PRIMARY KEY,
+    Funcao_Membro VARCHAR(252),
+    FK_ID_Familia INT,
+    FK_ID_Personagem INT
+);
+ 
+ALTER TABLE Personagem ADD CONSTRAINT FK_Personagem_2
+    FOREIGN KEY (FK_ID_Tratamento)
+    REFERENCES Tratamento (ID_Tratamento)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Personagem ADD CONSTRAINT FK_Personagem_3
+    FOREIGN KEY (FK_ID_Sociocultural)
+    REFERENCES Contexto_Sociocultural (ID_Sociocultural)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE Membro_Familia ADD CONSTRAINT FK_Membro_Familia_2
+    FOREIGN KEY (FK_ID_Familia)
+    REFERENCES Familia (ID_Familia);
+ 
+ALTER TABLE Membro_Familia ADD CONSTRAINT FK_Membro_Familia_3
+    FOREIGN KEY (FK_ID_Personagem)
+    REFERENCES Personagem (ID_Personagem);

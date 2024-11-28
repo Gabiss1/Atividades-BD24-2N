@@ -1,0 +1,43 @@
+/* Lógico_1: */
+
+CREATE TABLE Fase_Tratamento (
+    ID_Tratamento INT PRIMARY KEY,
+    Nome_Tratamento VARCHAR(252),
+    Descricao_Tratamento VARCHAR(252)
+);
+
+CREATE TABLE Familia (
+    ID_Familia INT PRIMARY KEY,
+    Nome_Familia VARCHAR(252),
+    Qntde_Membro INT
+);
+
+CREATE TABLE Membro_Familia (
+    ID_MembroFamilia INT PRIMARY KEY,
+    ID_Familia INT,
+    ID_Personagem INT
+);
+
+CREATE TABLE Personagem (
+    ID_Personagem INT PRIMARY KEY,
+    ID_SocioCultural INT,
+    Nome_Personagem VARCHAR(252),
+    Profissao_Personagem VARCHAR(252)
+);
+
+CREATE TABLE Contexto_Socio_Cultural (
+    ID_SocioCultural INT PRIMARY KEY,
+    Descricao_SocioCultura VARCHAR(252)
+);
+ 
+ALTER TABLE Membro_Familia ADD CONSTRAINT FK_Membro_Familia_2
+    FOREIGN KEY (ID_Personagem)
+    REFERENCES Personagem (ID_Personagem);
+ 
+ALTER TABLE Membro_Familia ADD CONSTRAINT FK_Membro_Familia_3
+    FOREIGN KEY (ID_Familia)
+    REFERENCES Familia (ID_Familia);
+ 
+ALTER TABLE Personagem ADD CONSTRAINT FK_Personagem_2
+    FOREIGN KEY (ID_Familia???, ID_SocioCultural)
+    REFERENCES Contexto_Socio_Cultural (???, ID_SocioCultural);

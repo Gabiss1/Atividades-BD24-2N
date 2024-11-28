@@ -1,0 +1,28 @@
+Aula Banco de Dados - 2
+
+Modelo conceitual é o mais alto nivel, já o Físico é o de mais baixo nível
+baseado na experiência do usuário.
+
+Banco de Dados Hierárquico - Mais antigo
+Banco de Dados de Redes - Informações não se repetem
+Banco de Dados Relacional - Tabelas se conectam
+
+DB Relacional:
+Recuperar dados
+
+Componentes:
+Tabelas
+Colunas - Campos
+Tipos de Dados
+Regras
+PK
+Foreing Key - Informação de outra tabela
+Padrões
+View
+Índice
+
+
+
+
+
+
